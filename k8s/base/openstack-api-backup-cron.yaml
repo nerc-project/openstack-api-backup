@@ -48,8 +48,6 @@ spec:
                 - name: openstack-api-backup-awscli-creds
                   mountPath: "/tmp/.aws/credentials"
                   subPath: 'credentials'
-                  securityContext:
-              allowPrivilegeEscalation: false
 
           volumes:
             - name: openstack-api-backup
