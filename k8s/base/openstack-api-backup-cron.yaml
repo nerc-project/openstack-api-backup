@@ -3,9 +3,9 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: openstack-api-backup
-  namespace: openstack-api-backup
+  namespace: default
 spec:
-  schedule: "0 0 * * *"
+  schedule: "25 * * * *"
   concurrencyPolicy: Replace
   jobTemplate:
     spec:
@@ -48,6 +48,9 @@ spec:
                 - name: openstack-api-backup-awscli-creds
                   mountPath: "/tmp/.aws/credentials"
                   subPath: 'credentials'
+                  securityContext:
+              allowPrivilegeEscalation: false
+
           volumes:
             - name: openstack-api-backup
               persistentVolumeClaim:
