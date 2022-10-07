@@ -5,7 +5,7 @@ metadata:
   name: openstack-api-backup
   namespace: openstack-api-backup
 spec:
-  schedule: "0 0 * * *"
+  schedule: "5 * * * *"
   concurrencyPolicy: Replace
   jobTemplate:
     spec:
@@ -48,6 +48,7 @@ spec:
                 - name: openstack-api-backup-awscli-creds
                   mountPath: "/tmp/.aws/credentials"
                   subPath: 'credentials'
+
           volumes:
             - name: openstack-api-backup
               persistentVolumeClaim:
