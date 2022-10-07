@@ -3,7 +3,7 @@ apiVersion: batch/v1
 kind: CronJob
 metadata:
   name: openstack-api-backup
-  namespace: default
+  namespace: openstack-api-backup
 spec:
   jobTemplate:
     spec:
