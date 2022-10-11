@@ -6,6 +6,7 @@ BACKUP_ROTATE=${BACKUP_ROTATE:-7}
 AWSCLI_CREDS=${AWSCLI_CREDS:-"$HOME/.aws/credentials"}
 S3_ENDPOINT=${S3_ENDPOINT:-"https://s3.amazonaws.com"}
 S3_BUCKET_URI=${S3_BUCKET_URI:-""}
+VM_INFO_SCRIPT=${VM_INFO_SCRIPT:-"/opt/venv/bin/openstack-vm-scan.py"}
 
 [[ "${DEBUG}" =~ (1|true) ]] && set -x
 
@@ -13,8 +14,8 @@ S3_BUCKET_URI=${S3_BUCKET_URI:-""}
 function backup_openstack_apis() {
   echo ">>> Backing up OpenStack servers"
   timestamp=$(date +%Y%m%d%H%M%S)
+  $VM_INFO_SCRIPT > $BACKUP_DIR/$timestamp.nova-server-info
 }
-
 
 function retention() {
   backups_to_delete=$(find "${BACKUP_DIR}" -type f | sort -rn | tail -n +$((${BACKUP_ROTATE} + 1)))
@@ -55,7 +56,7 @@ function validate_input() {
 function main() {
   sync_s3_to_backups_dir
   validate_input
-  backup_servers
+  backup_openstack_apis
   retention
   sync_backups_to_s3
 }
