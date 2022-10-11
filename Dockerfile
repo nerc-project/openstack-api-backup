@@ -17,6 +17,7 @@ RUN pip3 install -r /tmp/requirements.txt
 RUN python3 -m venv /opt/venv
 
 COPY src/bin/openstack-api-backup.sh /opt/venv/bin
+COPY src/bin/openstack-vm-state.py /opt/venv/bin
 
 # Final Image
 FROM python:3.9-slim-bullseye
