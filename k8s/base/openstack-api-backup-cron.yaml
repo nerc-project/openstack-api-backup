@@ -5,7 +5,7 @@ metadata:
   name: openstack-api-backup
   namespace: openstack-api-backup
 spec:
-  schedule: "5 * * * *"
+  schedule: "5 0 * * *"
   concurrencyPolicy: Replace
   jobTemplate:
     spec:
