@@ -30,3 +30,21 @@ spec:
                     secretKeyRef:
                       name: openstack-api-backup
                       key: backup_rotate
+                - name: OS_AUTH_URL
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: os_auth_url
+                - name: OS_APPLICATION_CREDENTIAL_ID
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: os_application_credential_id
+                - name: OS_APPLICATION_CREDENTIAL_SECRET
+                  valueFrom:
+                    $path: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: os_application_credential_secret

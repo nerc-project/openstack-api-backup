@@ -13,8 +13,8 @@ S3_BUCKET_URI=${S3_BUCKET_URI:-""}
 function backup_openstack_apis() {
   echo ">>> Backing up OpenStack servers"
   timestamp=$(date +%Y%m%d%H%M%S)
+  openstack server list --all-projects -f json > $BACKUP_DIR/$timestamp.nova-server-info
 }
-
 
 function retention() {
   backups_to_delete=$(find "${BACKUP_DIR}" -type f | sort -rn | tail -n +$((${BACKUP_ROTATE} + 1)))
@@ -55,7 +55,7 @@ function validate_input() {
 function main() {
   sync_s3_to_backups_dir
   validate_input
-  backup_servers
+  backup_openstack_apis
   retention
   sync_backups_to_s3
 }
