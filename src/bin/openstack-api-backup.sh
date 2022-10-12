@@ -6,7 +6,7 @@ BACKUP_ROTATE=${BACKUP_ROTATE:-7}
 AWSCLI_CREDS=${AWSCLI_CREDS:-"$HOME/.aws/credentials"}
 S3_ENDPOINT=${S3_ENDPOINT:-"https://s3.amazonaws.com"}
 S3_BUCKET_URI=${S3_BUCKET_URI:-""}
-VM_INFO_SCRIPT=${VM_INFO_SCRIPT:-"/opt/venv/bin/openstack-vm-scan.py"}
+VM_INFO_SCRIPT=${VM_INFO_SCRIPT:-"/opt/venv/bin/openstack-vm-save.py"}
 
 [[ "${DEBUG}" =~ (1|true) ]] && set -x
 

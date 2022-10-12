@@ -66,4 +66,3 @@ if __name__ == "__main__":
         print("Need to provide saved state file")
         exit(1)
     main(input_file)
-
