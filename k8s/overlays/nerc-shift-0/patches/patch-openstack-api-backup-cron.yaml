@@ -30,6 +30,8 @@ spec:
                     secretKeyRef:
                       name: openstack-api-backup
                       key: backup_rotate
+                - name: OS_AUTH_TYPE
+                  value: v3applicationcredential
                 - name: OS_AUTH_URL
                   valueFrom:
                     $patch: replace
