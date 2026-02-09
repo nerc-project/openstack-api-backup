@@ -1,0 +1,53 @@
+---
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: openstack-api-backup
+  namespace: openstack-api-backup
+spec:
+  schedule: 4 * * * *
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - name: openstack-api-backup
+              env:
+                - name: S3_ENDPOINT
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: s3_endpoint
+                - name: S3_BUCKET_URI
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: s3_bucket_uri
+                - name: BACKUP_ROTATE
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: backup_rotate
+                - name: OS_AUTH_TYPE
+                  value: v3applicationcredential
+                - name: OS_AUTH_URL
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: os_auth_url
+                - name: OS_APPLICATION_CREDENTIAL_ID
+                  valueFrom:
+                    $patch: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: os_application_credential_id
+                - name: OS_APPLICATION_CREDENTIAL_SECRET
+                  valueFrom:
+                    $path: replace
+                    secretKeyRef:
+                      name: openstack-api-backup
+                      key: os_application_credential_secret
