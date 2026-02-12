@@ -20,6 +20,14 @@ spec:
             - name: openstack-api-backup
               image: ghcr.io/nerc-project/openstack-api-backup:main
               imagePullPolicy: Always
+              securityContext:
+                allowPrivilegeEscalation: false
+                runAsNonRoot: true
+                capabilities:
+                  drop:
+                    - ALL
+                seccompProfile:
+                  type: RuntimeDefault
               env:
                 - name: HOME
                   value: '/tmp'
