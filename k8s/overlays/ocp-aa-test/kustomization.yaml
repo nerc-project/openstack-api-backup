@@ -1,9 +1,0 @@
----
-namespace: openstack-api-backup
-resources:
-  - ../../base
-  - secrets
-  - pvc.yaml
-
-patchesStrategicMerge:
-  - patches/patch-openstack-api-backup-cron.yaml

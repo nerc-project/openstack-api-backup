@@ -1,5 +1,5 @@
 ---
-namespace: default
+namespace: openstack-api-backup
 resources:
   - ../../base
   - secrets
