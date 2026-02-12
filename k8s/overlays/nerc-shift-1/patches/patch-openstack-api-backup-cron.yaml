@@ -5,7 +5,7 @@ metadata:
   name: openstack-api-backup
   namespace: openstack-api-backup
 spec:
-  schedule: 4 * * * *
+  schedule: 35 * * * *
   jobTemplate:
     spec:
       template:
