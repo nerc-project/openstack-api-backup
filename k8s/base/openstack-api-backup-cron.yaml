@@ -26,8 +26,6 @@ spec:
                 capabilities:
                   drop:
                     - ALL
-                seccompProfile:
-                  type: RuntimeDefault
               env:
                 - name: HOME
                   value: '/tmp'
