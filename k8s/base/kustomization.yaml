@@ -1,4 +1,5 @@
 ---
 resources:
   - namespace.yaml
+  - rolebinding.yaml
   - openstack-api-backup-cron.yaml
